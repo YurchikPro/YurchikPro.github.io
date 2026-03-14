@@ -27,3 +27,11 @@ color:white;
 border:none;
 font-size:18px;
 }
+
+.progress-bar { background: #eee; height: 5px; border-radius: 5px; margin-bottom: 20px; }
+#progress { background: #2b7cff; width: 50%; height: 100%; transition: 0.3s; }
+.checkbox-line { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 14px; }
+.checkbox-line input { width: auto; margin: 0; }
+.price-display { margin-top: 20px; font-weight: bold; font-size: 20px; color: #2b7cff; }
+.btn-back { background: #ccc; margin-top: 10px; font-size: 14px; padding: 10px; }
+textarea { width: 100%; margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
