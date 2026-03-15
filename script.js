@@ -49,7 +49,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
     // Відправка в Google Sheets
 
-    fetch("https://script.google.com/macros/s/AKfycbzp-qYvIPFQ5LL3tWHovbIM6fWVT4lnSzZMfNftrPCE36OmFDFvSfZJ43Mt8wEQNC2zbw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbwVvDibMGVmI-Trrn5bATCZKOA5MNvuJ5mbbeJuGKNw6d5L-kKP8K0TqSzEecKGCbJ6hw/exec", {
 
         method: "POST",
         body: JSON.stringify(data)
