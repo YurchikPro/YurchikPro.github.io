@@ -35,6 +35,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
     const data = {
         fullname: document.getElementById('fullname').value,
         phone: document.getElementById('phone').value,
+        telegram: document.getElementById('telegram').value,
         email: document.getElementById('email').value,
         age: document.getElementById('age').value,
         spec: document.getElementById('specialization').value,
@@ -49,7 +50,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
     // Відправка в Google Sheets
 
-fetch("https://script.google.com/macros/s/AKfycbx2_2yAZCe2kGgRpVTqfZ1yVW-yk3zMNSHrRSHw6_AORbARKbL2bsrc6jNgwwvwFE4dXw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbyPRX0R4UBLSjfXRnAvBpKIvQSd9zdue9GVAXAS6SiWsQziSIgQjPb-MvQwdKuWucYuiA/exec", {
     method: "POST",
     mode: "no-cors", // Додаємо цей рядок
     body: JSON.stringify(data),
