@@ -1,13 +1,22 @@
-function nextStep() {
-    document.getElementById('step1').style.display = 'none';
-    document.getElementById('step2').style.display = 'block';
-    document.getElementById('progress').style.width = '100%';
-}
-
-function prevStep() {
+function firstStep() {
     document.getElementById('step1').style.display = 'block';
     document.getElementById('step2').style.display = 'none';
-    document.getElementById('progress').style.width = '50%';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('progress').style.width = '33%';
+}
+
+function secondStep() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('progress').style.width = '66%';
+}
+
+function thirdStep() {
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'block';
+    document.getElementById('progress').style.width = '99%';
 }
 
 // Розрахунок ціни

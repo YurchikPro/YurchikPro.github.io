@@ -23,7 +23,13 @@
             <input type="tel" id="phone" placeholder="Номер телефону в форматі +380ХХХХХХХХ" required>
             <input type="text" id="telegram" placeholder="Нікнейм в телеграмі в форматі @MarkGrayson" required>
             <input type="email" id="email" placeholder="Email (для квитка)" required>
-            <select id="age" required>
+            <button type="button" onclick="secondStep()">Далі ➔</button>
+        </div>
+
+        <div class="step" id="step2" style="display:none;">
+        	<h3> Особиста інформація </h3>
+
+        	<select id="age" required>
                 <option value="" disabled selected>Ваш вік</option>
                 <option>менше 25</option>
                 <option>25–30 років</option>
@@ -33,19 +39,16 @@
                 <option>46–50 років</option>
                 <option>Понад 50 років</option>
             </select>
-            <button type="button" onclick="nextStep()">Далі ➔</button>
-        </div>
 
-        <div class="step" id="step2" style="display:none;">
-            <h3>Професійні деталі</h3>
             <select id="specialization" required>
                 <option value="" disabled selected>Спеціалізація та статус</option>
                 <option data-price="1500">Лікар сімейний лікар</option>
                 <option data-price="1500">Лікар педіатр</option>
                 <option data-price="1000">Інтерн сімейний лікар</option>
                 <option data-price="1000">Інтерн педіатр</option>
-            </select>
-            <input type="text" id="city" placeholder="З якого ви міста?" required>
+                 </select>
+
+                  <input type="text" id="city" placeholder="З якого ви міста?" required>
             <select id="source" required>
                 <option value="" disabled selected>Звідки про нас дізналися?</option>
                 <option>Instagram</option>
@@ -55,7 +58,18 @@
                 <option>Інше</option>
             </select>
             
-            <div class="checkbox-group">
+             <div class="checkbox-line">
+                <input type="checkbox" id="blog"> <label>Чи ведете професійний блог лікаря?</label>
+            </div>
+
+            <button type="button" onclick="thirdStep()">Далі ➔</button>
+            <button type="button" class="btn-back" onclick="firstStep()">Назад</button>
+        </div>
+
+        <div class="step" id="step3" style="display:none;">
+            <h3>Фінал</h3>
+             
+           <div class="checkbox-group">
                 <label>Учасник Клубу (знижка)?</label>
                 <select id="club_member">
                     <option value="none">Ні</option>
@@ -64,9 +78,7 @@
                 </select>
             </div>
 
-            <div class="checkbox-line">
-                <input type="checkbox" id="blog"> <label>Чи ведете професійний блог лікаря?</label>
-            </div>
+           
             <div class="checkbox-line">
                 <input type="checkbox" id="partners"> <label>Чи цікава вам інформація від наших партнерів (фармацевтичних компаній) щодо нових протоколів та препаратів?</label>
             </div>
@@ -81,7 +93,7 @@
 
             <div class="price-display">До сплати: <span id="final-price">0</span> грн</div>
             <button type="submit" id="submit-btn">Зареєструватись і оплатити</button>
-            <button type="button" class="btn-back" onclick="prevStep()">Назад</button>
+            <button type="button" class="btn-back" onclick="secondStep()">Назад</button>
         </div>
     </form>
 </div>
