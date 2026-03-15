@@ -29,6 +29,8 @@
         <div class="step" id="step2" style="display:none;">
         	<h3> Особиста інформація </h3>
 
+			<input type="text" id="city" placeholder="З якого ви міста?" required>
+
         	<select id="age" required>
                 <option value="" disabled selected>Ваш вік</option>
                 <option>менше 25</option>
@@ -48,7 +50,13 @@
                 <option data-price="1000">Інтерн педіатр</option>
                  </select>
 
-                  <input type="text" id="city" placeholder="З якого ви міста?" required>
+                 <select id="blog" required>
+                <option value="" disabled selected>Чи ведете ви професійний блог лікаря?</option>
+                <option>Так, веду професійн блог</option>
+                <option>Ні, веду свій блог</option>
+                <option>Ні, не веду жоден блог</option>
+            </select>
+
             <select id="source" required>
                 <option value="" disabled selected>Звідки про нас дізналися?</option>
                 <option>Instagram</option>
@@ -57,10 +65,8 @@
                 <option>Рекомендація колег</option>
                 <option>Інше</option>
             </select>
-            
-             <div class="checkbox-line">
-                <input type="checkbox" id="blog"> <label>Чи ведете професійний блог лікаря?</label>
-            </div>
+
+             
 
             <button type="button" onclick="thirdStep()">Далі ➔</button>
             <button type="button" class="btn-back" onclick="firstStep()">Назад</button>
@@ -90,6 +96,8 @@
             </div>
 
             <textarea id="comments" placeholder="Побажання чи зауваження"></textarea>
+
+            <script type="text/javascript" id="widget-wfp-script" src="https://secure.wayforpay.com/server/pay-widget.js?ref=button"></script> <script type="text/javascript">function runWfpWdgt(url){var wayforpay=new Wayforpay();wayforpay.invoice(url);}</script> <button type="button" onclick="runWfpWdgt('https://secure.wayforpay.com/button/b0e3c2fc1cf60');" style="display:inline-block!important;background:#0488cd;background-size:cover;width: 256px!important;height:54px!important;border:none!important;border-radius:14px!important;padding:16px!important;box-shadow:3px 2px 8px rgba(71,66,66,0.22)!important;text-align:center!important;outline:none!important;" onmouseover="this.style.opacity='0.8';" onmouseout="this.style.opacity='1';"> <span style="font-family:Verdana,Arial,sans-serif!important;font-weight:bold!important;font-size:14px!important;color:#ffffff!important;line-height:18px!important;vertical-align:middle!important;">Оплатити</span></button>
 
             <div class="price-display">До сплати: <span id="final-price">0</span> грн</div>
             <button type="submit" id="submit-btn">Зареєструватись і оплатити</button>

@@ -68,10 +68,10 @@ fetch("https://script.google.com/macros/s/AKfycbyPRX0R4UBLSjfXRnAvBpKIvQSd9zdue9
     }
 }).then(() => {
     // Тепер перехід відбудеться швидше
-    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11?&clientEmail=" + data.email;
+    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11";
 }).catch(err => {
     console.log(err);
     alert("Сталася помилка, але ви можете оплатити!");
-    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11?&clientEmail=" + data.email;
+    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11";
 });
 });
