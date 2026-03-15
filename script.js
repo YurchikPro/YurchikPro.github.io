@@ -49,12 +49,19 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
     // Відправка в Google Sheets
 
-    fetch("https://script.google.com/macros/s/AKfycbwVvDibMGVmI-Trrn5bATCZKOA5MNvuJ5mbbeJuGKNw6d5L-kKP8K0TqSzEecKGCbJ6hw/exec", {
-
-        method: "POST",
-        body: JSON.stringify(data)
-    }).then(() => {
-        // Перехід на WayForPay
-        window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11?&clientEmail=" + data.email;
-    });
+fetch("https://script.google.com/macros/s/AKfycbx2_2yAZCe2kGgRpVTqfZ1yVW-yk3zMNSHrRSHw6_AORbARKbL2bsrc6jNgwwvwFE4dXw/exec", {
+    method: "POST",
+    mode: "no-cors", // Додаємо цей рядок
+    body: JSON.stringify(data),
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(() => {
+    // Тепер перехід відбудеться швидше
+    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11?&clientEmail=" + data.email;
+}).catch(err => {
+    console.log(err);
+    alert("Сталася помилка, але ви можете оплатити!");
+    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11?&clientEmail=" + data.email;
+});
 });
