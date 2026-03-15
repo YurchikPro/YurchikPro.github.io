@@ -48,7 +48,11 @@ document.getElementById("form").addEventListener("submit", function(e) {
     };
 
     // Відправка в Google Sheets
+<<<<<<< HEAD
     fetch("https://script.google.com/macros/s/AKfycbzp-qYvIPFQ5LL3tWHovbIM6fWVT4lnSzZMfNftrPCE36OmFDFvSfZJ43Mt8wEQNC2zbw/exec", {
+=======
+    fetch("https://script.google.com/macros/s/AKfycbzUP22VqPHbRC_dPzbrrDd6ebPm3aYzdf9oY4nouaebvTXhPlVyRql4fSanh1NuPcoc/exec", {
+>>>>>>> origin/main
         method: "POST",
         body: JSON.stringify(data)
     }).then(() => {
