@@ -59,7 +59,7 @@ document.getElementById("form").addEventListener("submit", function(e) {
 
     // Відправка в Google Sheets
 
-fetch("https://script.google.com/macros/s/AKfycbyPRX0R4UBLSjfXRnAvBpKIvQSd9zdue9GVAXAS6SiWsQziSIgQjPb-MvQwdKuWucYuiA/exec", {
+fetch("https://script.google.com/macros/s/AKfycbz6DVKgSDnRTlcBGoUkfRsRLBodHrnxFRobpkysRZ6Lce1-fpHaYknBa3YSIUYXncdpmg/exec", {
     method: "POST",
     mode: "no-cors", // Додаємо цей рядок
     body: JSON.stringify(data),
