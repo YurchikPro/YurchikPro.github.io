@@ -16,7 +16,7 @@ function thirdStep() {
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'none';
     document.getElementById('step3').style.display = 'block';
-    document.getElementById('progress').style.width = '99%';
+    document.getElementById('progress').style.width = '100%';
 }
 
 // Розрахунок ціни

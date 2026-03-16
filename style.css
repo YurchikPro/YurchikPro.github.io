@@ -1,37 +1,248 @@
-body{
-font-family:Arial;
-background:#f5f5f5;
+/* Основні налаштування сторінки */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6; /* Світло-сірий фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.container{
-max-width:600px;
-margin:auto;
-background:white;
-padding:30px;
-margin-top:40px;
-border-radius:10px;
+/* Контейнер форми */
+.container {
+    background-color: #ffffff; /* Білий фон для форми */
+    padding: 40px;
+    border-radius: 12px; /* Заокруглені кути */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* М'яка тінь */
+    width: 100%;
+    max-width: 450px; /* Обмежуємо ширину */
+    box-sizing: border-box; /* Важливо для відступів */
 }
 
-input,select{
-width:100%;
-padding:10px;
-margin-top:10px;
+/* Заголовки */
+h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 22px;
 }
 
-button{
-margin-top:20px;
-padding:15px;
-width:100%;
-background:#2b7cff;
-color:white;
-border:none;
-font-size:18px;
+/* Стилізація полів вводу (input) та випадаючих списків (select) */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box; /* Важливо для правильної ширини */
+    transition: border-color 0.2s;
 }
 
-.progress-bar { background: #eee; height: 5px; border-radius: 5px; margin-bottom: 20px; }
-#progress { background: #2b7cff; width: 50%; height: 100%; transition: 0.3s; }
-.checkbox-line { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 14px; }
-.checkbox-line input { width: auto; margin: 0; }
-.price-display { margin-top: 20px; font-weight: bold; font-size: 20px; color: #2b7cff; }
-.btn-back { background: #ccc; margin-top: 10px; font-size: 14px; padding: 10px; }
-textarea { width: 100%; margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+/* Ефект при фокусі на полі */
+input:focus, select:focus, textarea:focus {
+    border-color: #2b7cff; /* Колір WayForPay */
+    outline: none;
+}
+
+/* Текстова область (Побажання) */
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Блоки з чекбоксами (Згоди) */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.checkbox-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.checkbox-line input {
+    width: auto;
+    margin: 0;
+}
+
+/* Блок відображення ціни */
+.price-display {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#final-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b7cff;
+}
+
+/* Основні кнопки */
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Кнопка "Далі" та "Оплатити" */
+button#next-btn, button[type="submit"] {
+    background-color: #2b7cff; /* Колір WayForPay */
+    color: white;
+}
+
+button#next-btn:hover, button[type="submit"]:hover {
+    background-color: #1a64dd;
+}
+
+button:active {
+    transform: scale(0.98); /* Ефект натискання */
+}
+
+/* Кнопка "Назад" */
+.btn-back {
+    background-color: #f1f1f1;
+    color: #555;
+    margin-top: 10px;
+}
+
+.btn-back:hover {
+    background-color: #e4e4e4;
+}
+
+/* Схований другий блок */
+#step2 {
+    display: none;
+}
+
+/* Робимо підписи над полями (якщо вони є) */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Стиль для рядка з чекбоксом */
+.checkbox-line {
+    display: flex;
+    align-items: flex-start; /* Вирівнювання по верхньому краю, якщо текст довгий */
+    gap: 10px;
+    margin-bottom: 12px;
+    cursor: pointer; /* Щоб з'являвся "палець" при наведенні */
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.checkbox-line input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px; /* Трохи опускаємо, щоб було в рівень з текстом */
+    cursor: pointer;
+}
+
+.required::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+/* Контейнер для лінії */
+.progress-container {
+    width: 100%;
+    height: 8px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden; /* Щоб лінія не виходила за краї */
+}
+
+/* Сама лінія прогресу */
+#progress {
+    width: 33%; /* Початковий стан — перший крок */
+    height: 100%;
+    background: linear-gradient(90deg, #2b7cff, #00d4ff); /* Гарний градієнт */
+    transition: width 0.4s ease-in-out; /* Плавна анімація заповнення */
+}
+
+/* Додай це у style.css для input та select */
+input, select {
+    background-color: #f9f9f9; /* Дуже світло-сірий */
+    border: 1px solid #e0e0e0;
+}
+
+/* Колір при натисканні (фокусі) */
+input:focus, select:focus {
+    background-color: #ffffff;
+    border-color: #2b7cff;
+}
+
+label {
+    font-size: 13px;
+    text-transform: uppercase; /* Маленькі великі літери */
+    letter-spacing: 0.5px;
+    color: #666;
+    margin-bottom: 8px;
+    margin-top: 15px; /* Більше простору між групами */
+}
+
+input, select {
+    border: 2px solid #f0f0f0; /* Товстіша, але світліша межа */
+    border-radius: 8px;
+    padding: 14px;
+    transition: all 0.3s ease;
+}
+
+input:hover, select:hover {
+    border-color: #d0d0d0; /* Межа темніє при наведенні */
+}
+
+/* Виділення активного поля */
+input:focus, select:focus {
+    box-shadow: 0 0 0 4px rgba(43, 124, 255, 0.1); /* М'яке блакитне сяйво */
+    border-color: #2b7cff;
+}
+
+/* Контейнер для рядка з чекбоксом */
+.checkbox-line {
+    display: flex;
+    align-items: flex-start; /* Вирівнювання по верхньому краю */
+    gap: 15px;               /* Відстань між квадратиком і текстом */
+    margin-bottom: 20px;     /* Відступ між різними пунктами згоди */
+    cursor: pointer;
+    text-align: left;
+}
+
+/* Стилізація самого квадратика */
+.checkbox-line input[type="checkbox"] {
+    width: 20px;             /* Робимо його більшим */
+    height: 20px;
+    margin: 0;               /* Прибираємо стандартні відступи */
+    flex-shrink: 0;          /* Забороняємо йому стискатися, якщо текст довгий */
+    cursor: pointer;
+}
+
+/* Стилізація тексту поруч */
+.checkbox-line label {
+    font-size: 14px;
+    line-height: 1.5;        /* Збільшуємо міжрядковий інтервал для читабельності */
+    color: #444;
+    font-weight: 500;
+    margin: 0;               /* Прибираємо стандартні відступи label */
+    cursor: pointer;
+    text-transform: none;    /* Вимикаємо Uppercase, якщо він був увімкнений раніше */
+}

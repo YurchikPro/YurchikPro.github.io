@@ -15,7 +15,7 @@
 <body>
 
 <div class="container">
-    <div class="progress-bar"><div id="progress"></div></div>
+    <div class="progress-container"><div id="progress"></div></div>
     <form id="form">
         <div class="step" id="step1">
             <h3>Контактна інформація</h3>
@@ -29,8 +29,9 @@
         <div class="step" id="step2" style="display:none;">
         	<h3> Особиста інформація </h3>
 
+        	<label>З якого ви населеного пункту?</label>
 			<input type="text" id="city" placeholder="З якого ви міста?" required>
-
+			<label for="age">Вкажіть ваш вік:</label>
         	<select id="age" required>
                 <option value="" disabled selected>Ваш вік</option>
                 <option>менше 25</option>
@@ -42,21 +43,31 @@
                 <option>Понад 50 років</option>
             </select>
 
+            <label>Ваша спеціалізація та статус</label>
             <select id="specialization" required>
                 <option value="" disabled selected>Спеціалізація та статус</option>
-                <option data-price="1500">Лікар сімейний лікар</option>
-                <option data-price="1500">Лікар педіатр</option>
-                <option data-price="1000">Інтерн сімейний лікар</option>
-                <option data-price="1000">Інтерн педіатр</option>
+                <option>Лікар сімейний лікар</option>
+                <option>Лікар педіатр</option>
+                <option>Інтерн сімейний лікар</option>
+                <option>Інтерн педіатр</option>
                  </select>
 
+                 <label>Учасник Клубу (знижка)?</label>
+                <select id="club_member">
+                    <option value="none">Ні</option>
+                    <option value="pediatric">Так (Клуб педіатрів)</option>
+                    <option value="family">Так (Клуб сімейних лікарів)</option>
+                </select>
+
+                <label>Чи ведете ви професійний блог лікаря</label>
                  <select id="blog" required>
                 <option value="" disabled selected>Чи ведете ви професійний блог лікаря?</option>
-                <option>Так, веду професійн блог</option>
-                <option>Ні, веду свій блог</option>
+                <option>Так, веду професійний блог</option>
+                <option>Ні, веду особистий блог</option>
                 <option>Ні, не веду жоден блог</option>
             </select>
 
+            <label>Звідки ви про нас дізналися?</label>
             <select id="source" required>
                 <option value="" disabled selected>Звідки про нас дізналися?</option>
                 <option>Instagram</option>
@@ -75,29 +86,28 @@
         <div class="step" id="step3" style="display:none;">
             <h3>Фінал</h3>
              
-           <div class="checkbox-group">
-                <label>Учасник Клубу (знижка)?</label>
-                <select id="club_member">
-                    <option value="none">Ні</option>
-                    <option value="pediatric">Так (Клуб педіатрів)</option>
-                    <option value="family">Так (Клуб сімейних лікарів)</option>
-                </select>
-            </div>
-
            
-            <div class="checkbox-line">
-                <input type="checkbox" id="partners"> <label>Чи цікава вам інформація від наших партнерів (фармацевтичних компаній) щодо нових протоколів та препаратів?</label>
-            </div>
-            <div class="checkbox-line">
-                <input type="checkbox" required> <label>Згода на обробку персональних даних</label>
-            </div>
-            <div class="checkbox-line">
-                <input type="checkbox" required> <label>Згода на фото- та відеозйомку під час заходу та подальше використання матеріалів у соціальних мережах</label>
-            </div>
+
+
+            <label class="checkbox-line">
+   			 <input type="checkbox" id="partners">
+   			 <span>Чи цікава вам інформація від наших партнерів (фармацевтичних компаній) щодо нових протоколів та препаратів?</span>
+			</label>
+
+			<label class="checkbox-line">
+   			 <input type="checkbox" id="partners">
+   			 <span>Згода на обробку персональних даних</span>
+			</label>
+
+			<label class="checkbox-line">
+   			 <input type="checkbox" id="partners">
+   			 <span>Згода на фото- та відеозйомку під час заходу та подальше використання матеріалів у соціальних мережах</span>
+			</label>
+            
 
             <textarea id="comments" placeholder="Побажання чи зауваження"></textarea>
 
-            <script type="text/javascript" id="widget-wfp-script" src="https://secure.wayforpay.com/server/pay-widget.js?ref=button"></script> <script type="text/javascript">function runWfpWdgt(url){var wayforpay=new Wayforpay();wayforpay.invoice(url);}</script> <button type="button" onclick="runWfpWdgt('https://secure.wayforpay.com/button/b0e3c2fc1cf60');" style="display:inline-block!important;background:#0488cd;background-size:cover;width: 256px!important;height:54px!important;border:none!important;border-radius:14px!important;padding:16px!important;box-shadow:3px 2px 8px rgba(71,66,66,0.22)!important;text-align:center!important;outline:none!important;" onmouseover="this.style.opacity='0.8';" onmouseout="this.style.opacity='1';"> <span style="font-family:Verdana,Arial,sans-serif!important;font-weight:bold!important;font-size:14px!important;color:#ffffff!important;line-height:18px!important;vertical-align:middle!important;">Оплатити</span></button>
+
 
             <div class="price-display">До сплати: <span id="final-price">0</span> грн</div>
             <button type="submit" id="submit-btn">Зареєструватись і оплатити</button>
