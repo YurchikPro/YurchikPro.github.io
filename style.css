@@ -246,3 +246,24 @@ input:focus, select:focus {
     cursor: pointer;
     text-transform: none;    /* Вимикаємо Uppercase, якщо він був увімкнений раніше */
 }
+
+.logo-container {
+    display: flex;
+    justify-content: space-between; /* Логотипи розлетяться по краях */
+    align-items: center;           /* Вирівнювання по вертикалі */
+    margin-bottom: 20px;           /* Відступ від форми */
+    padding: 0 10px;
+}
+
+.logo {
+    max-height: 150px;              /* Обмежуємо висоту логотипів */
+    width: auto;                   /* Ширина підлаштується автоматично */
+    object-fit: contain;
+}
+
+/* На мобільних телефонах лого краще зробити трохи меншими */
+@media (max-width: 480px) {
+    .logo {
+        max-height: 45px;
+    }
+}
