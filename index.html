@@ -23,10 +23,14 @@
     <form id="form">
         <div class="step" id="step1">
             <h3>Контактна інформація</h3>
-            <input type="text" id="fullname" placeholder="ПІБ (повністю для сертифіката)" required>
-            <input type="tel" id="phone" placeholder="Номер телефону в форматі +380ХХХХХХХХ" required>
-            <input type="text" id="telegram" placeholder="Нікнейм в телеграмі в форматі @MarkGrayson" required>
-            <input type="email" id="email" placeholder="Email (для квитка)" required>
+            <label>Ваше ПІБ (повністю для сертифіката</label>
+            <input type="text" id="fullname" placeholder="ПІБ" required>
+            <label>Ваш номер телефону</label>
+            <input type="tel" id="phone" placeholder="+380ХХХХХХХХ" required>
+            <label>Ваш нікнейм в телеграмі</label>
+            <input type="text" id="telegram" placeholder="@ExampleNick" required>
+            <label>Ваш нікнейм в телеграмі</label>
+            <input type="email" id="email" placeholder="example@gmail.com" required>
             <button type="button" onclick="secondStep()">Далі ➔</button>
         </div>
 
@@ -34,7 +38,7 @@
         	<h3> Особиста інформація </h3>
 
         	<label>З якого ви населеного пункту?</label>
-			<input type="text" id="city" placeholder="З якого ви міста?" required>
+			<input type="text" id="city" placeholder="Ваш населений пункт" required>
 			<label for="age">Вкажіть ваш вік:</label>
         	<select id="age" required>
                 <option value="" disabled selected>Ваш вік</option>
