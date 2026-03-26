@@ -241,7 +241,7 @@ input:focus, select:focus {
 /* Стилізація тексту поруч */
 .checkbox-line label {
     font-size: 14px;
-    line-height: 1.5;        /* Збільшуємо міжрядковий інтервал для читабельності */
+    line-height: 2;        /* Збільшуємо міжрядковий інтервал для читабельності */
     color: #444;
     font-weight: 500;
     margin: 0;               /* Прибираємо стандартні відступи label */
