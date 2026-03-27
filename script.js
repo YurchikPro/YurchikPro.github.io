@@ -19,18 +19,10 @@ function thirdStep() {
     document.getElementById('progress').style.width = '100%';
 }
 
-// Розрахунок ціни
-function updatePrice() {
-    let spec = document.getElementById('specialization');
-    let basePrice = parseInt(spec.options[spec.selectedIndex]?.dataset.price || 0);
-    let club = document.getElementById('club_member').value;
+
     
-    let discount = 0;
-    if (club === 'pediatric') discount = 200; // Наприклад, 200 грн
-    if (club === 'family') discount = 150;    // Або інша сума
-    
-    document.getElementById('final-price').innerText = Math.max(0, basePrice - discount);
-}
+
+
 
 document.getElementById('specialization').addEventListener('change', updatePrice);
 document.getElementById('club_member').addEventListener('change', updatePrice);
