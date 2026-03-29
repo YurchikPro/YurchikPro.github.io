@@ -60,7 +60,7 @@ fetch("https://script.google.com/macros/s/AKfycbz6DVKgSDnRTlcBGoUkfRsRLBodHrnxFR
     }
 }).then(() => {
     // Тепер перехід відбудеться швидше
-    window.location.href = "https://secure.wayforpay.com/button/b1ad7b3132f11";
+    window.location.href = "https://secure.wayforpay.com/payment/sc1422e1135ab";
 }).catch(err => {
     console.log(err);
     alert("Сталася помилка, але ви можете оплатити!");
