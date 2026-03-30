@@ -54,12 +54,12 @@ function updatePrice() {
     if (!spec) return;
     
     const selectedOption = spec.options[spec.selectedIndex];
-    const basePrice = parseInt(selectedOption ? selectedOption.getAttribute('data-price') : 0) || 0;
+    const basePrice = 1000;
     
     const club = document.getElementById('club_member').value;
     let discount = 0;
-    if (club === 'pediatric') discount = 200; 
-    if (club === 'family') discount = 150;    
+    if (club === 'pediatric') discount = 0; 
+    if (club === 'family') discount = 0;    
     
     const finalPrice = Math.max(0, basePrice - discount);
     document.getElementById('final-price').innerText = finalPrice;
