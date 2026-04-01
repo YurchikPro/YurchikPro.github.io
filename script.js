@@ -54,7 +54,7 @@ function updatePrice() {
     if (!spec) return;
     
     const selectedOption = spec.options[spec.selectedIndex];
-    const basePrice = 1000;
+    const basePrice = 1390;
     
     const club = document.getElementById('club_member').value;
     let discount = 0;
@@ -69,14 +69,16 @@ function updatePrice() {
 document.getElementById('specialization').addEventListener('change', updatePrice);
 document.getElementById('club_member').addEventListener('change', updatePrice);
 
-// 5. Обробка відправки форми
-document.getElementById("form").addEventListener("submit", function(e) {
+// 5. Обробка відправки форми (додано async)
+document.getElementById("form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     // Валідація фінального кроку
     if (!validateStep('step3')) return;
 
     const btn = document.getElementById('submit-btn');
+    const originalText = btn.innerText; // Зберігаємо текст, щоб повернути при помилці
+    
     btn.disabled = true;
     btn.innerText = "Зберігаємо...";
 
@@ -91,27 +93,35 @@ document.getElementById("form").addEventListener("submit", function(e) {
         city: document.getElementById('city').value,
         source: document.getElementById('source').value,
         club: document.getElementById('club_member').value,
-        // Отримуємо значення блогу (select або checkbox)
         blog: document.getElementById('blog').value || document.getElementById('blog').checked,
         partners: document.getElementById('partners').checked,
         comments: document.getElementById('comments').value,
         price: document.getElementById('final-price').innerText
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbz6DVKgSDnRTlcBGoUkfRsRLBodHrnxFRobpkysRZ6Lce1-fpHaYknBa3YSIUYXncdpmg/exec", {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(() => {
-        // Перехід на оплату
-        window.location.href = "https://secure.wayforpay.com/payment/sc1422e1135ab";
-    }).catch(err => {
+    try {
+        // Тепер await спрацює, бо функція вище позначена як async
+        await fetch("https://script.google.com/macros/s/AKfycbz6DVKgSDnRTlcBGoUkfRsRLBodHrnxFRobpkysRZ6Lce1-fpHaYknBa3YSIUYXncdpmg/exec", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        setTimeout(() => {
+            window.location.href = "https://secure.wayforpay.com/payment/s9a5003fe3c8d";
+        }, 300);
+
+    } catch (err) {
         console.error(err);
-        alert("Сталася помилка відправки даних.");
+        
+        alert("Ой! Не вдалося автоматично зберегти дані, але ви можете продовжити оплату.");
+        
         btn.disabled = false;
-        btn.innerText = "Зареєструватись і оплатити";
-    });
+        btn.innerText = originalText;
+
+        window.location.href = "https://secure.wayforpay.com/payment/sc1422e1135ab";
+    }
 });
