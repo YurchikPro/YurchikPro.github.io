@@ -54,12 +54,13 @@ function updatePrice() {
     if (!spec) return;
     
     const selectedOption = spec.options[spec.selectedIndex];
-    const basePrice = 1390;
+    const basePrice = 1750;
     
     const club = document.getElementById('club_member').value;
     let discount = 0;
-    if (club === 'pediatric') discount = 0; 
-    if (club === 'family') discount = 0;    
+    if (club === 'pediatric') discount = 250; 
+    if (club === 'family') discount = 250;
+    if (club === 'both') discount = 250;       
     
     const finalPrice = Math.max(0, basePrice - discount);
     document.getElementById('final-price').innerText = finalPrice;
@@ -100,7 +101,6 @@ document.getElementById("form").addEventListener("submit", async function(e) {
     };
 
     try {
-        // Тепер await спрацює, бо функція вище позначена як async
         await fetch("https://script.google.com/macros/s/AKfycbz6DVKgSDnRTlcBGoUkfRsRLBodHrnxFRobpkysRZ6Lce1-fpHaYknBa3YSIUYXncdpmg/exec", {
             method: "POST",
             mode: "no-cors",
@@ -110,18 +110,35 @@ document.getElementById("form").addEventListener("submit", async function(e) {
             }
         });
 
+        // ВИБІР ПОСИЛАННЯ НА ОПЛАТУ
+        const clubValue = document.getElementById('club_member').value;
+        let paymentUrl;
+
+        if (clubValue === 'pediatric' || clubValue === 'family' || clubValue === 'both') {
+            // Посилання для членів клубу (1500 грн)
+            paymentUrl = "https://secure.wayforpay.com/payment/seb010a6b3384"; 
+        } else {
+            // Посилання для всіх інших (1750 грн)
+            paymentUrl = "https://secure.wayforpay.com/payment/s45f342e70326"; 
+        }
+
         setTimeout(() => {
-            window.location.href = "https://secure.wayforpay.com/payment/s9a5003fe3c8d";
+            window.location.href = paymentUrl;
         }, 300);
 
     } catch (err) {
         console.error(err);
-        
         alert("Ой! Не вдалося автоматично зберегти дані, але ви можете продовжити оплату.");
         
         btn.disabled = false;
         btn.innerText = originalText;
 
-        window.location.href = "https://secure.wayforpay.com/payment/sc1422e1135ab";
+        // Повторюємо логіку вибору посилання і в блоці помилки
+        const clubValue = document.getElementById('club_member').value;
+        const fallbackUrl = (clubValue === 'pediatric' || clubValue === 'family' || clubValue === 'both') 
+            ? "https://secure.wayforpay.com/payment/seb010a6b3384" 
+            : "https://secure.wayforpay.com/payment/s45f342e70326";
+
+        window.location.href = fallbackUrl;
     }
 });
