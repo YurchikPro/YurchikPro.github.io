@@ -54,7 +54,7 @@ function updatePrice() {
     if (!spec) return;
     
     const selectedOption = spec.options[spec.selectedIndex];
-    const basePrice = 1750;
+    const basePrice = 2000;
     
     const club = document.getElementById('club_member').value;
     let discount = 0;
