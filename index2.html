@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Реєстрація на конференцію</title>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+	<div class="logo-container">
+    <img src="logo1.png" alt="Logo 1" class="logo">
+
+</div>
+    <div class="progress-container"><div id="progress"></div></div>
+    <form id="form">
+        <div class="step" id="step1">
+            <h3>Контактна інформація</h3>
+            <label>Ваше ПІБ (повністю для сертифіката) *</label>
+            <input type="text" id="fullname" placeholder="ПІБ" required>
+            <label>Ваш номер телефону *</label>
+            <input type="tel" id="phone" placeholder="+380ХХХХХХХХ" required>
+            <label>Ваша електронна пошта * </label>
+            <input type="email" id="email" placeholder="example@gmail.com" required>
+            <label>Ваш нікнейм в телеграмі</label>
+            <input type="text" id="telegram" placeholder="@ExampleName">
+            
+            <button type="button" onclick="secondStep()">Далі ➔</button>
+        </div>
+
+        <div class="step" id="step2" style="display:none;">
+        	<h3> Особиста інформація </h3>
+
+        	<label>З якого ви населеного пункту?</label>
+			<input type="text" id="city" placeholder="Ваш населений пункт" required>
+			<label for="age">Вкажіть ваш вік:</label>
+        	<select id="age" required>
+                <option value="" disabled selected>Ваш вік</option>
+                <option>менше 25</option>
+                <option>25–30 років</option>
+                <option>31–35 років</option>
+                <option>36–40 років</option>
+                <option>41–45 років</option>
+                <option>46–50 років</option>
+                <option>Понад 50 років</option>
+            </select>
+
+            <label>Ваша спеціалізація та статус</label>
+            <select id="specialization" required>
+                <option value="" disabled selected>Спеціалізація та статус</option>
+                <option>Лікар сімейний лікар</option>
+                <option>Лікар педіатр</option>
+                <option>Інтерн сімейний лікар</option>
+                <option>Інтерн педіатр</option>
+                 </select>
+
+                 <label>Чи є ви учасником клубу?</label>
+                <select id="club_member">
+                    <option value="none">Ні</option>
+                    <option value="pediatric">Так (Клуб педіатрів)</option>
+                    <option value="family">Так (Клуб сімейних лікарів)</option>
+                    <option value="both">Так, я є учасником обох клубів</option>
+                </select>
+
+                <label>Чи ведете ви професійний блог лікаря</label>
+                 <select id="blog" required>
+                <option value="" disabled selected>Чи ведете ви професійний блог лікаря?</option>
+                <option>Так, веду професійний блог</option>
+                <option>Ні, веду особистий блог</option>
+                <option>Ні, не веду жоден блог</option>
+            </select>
+
+            <label>Звідки ви про нас дізналися?</label>
+            <select id="source" required>
+                <option value="" disabled selected>Звідки про нас дізналися?</option>
+                <option>Instagram</option>
+                <option>Telegram</option>
+                <option>Email-розсилка</option>
+                <option>Рекомендація колег</option>
+                <option>Інше</option>
+            </select>
+
+             
+
+            <button type="button" onclick="thirdStep()">Далі ➔</button>
+            <button type="button" class="btn-back" onclick="firstStep()">Назад</button>
+        </div>
+
+        <div class="step" id="step3" style="display:none;">
+            <h3>Фінал</h3>
+             
+           
+
+
+            <label class="checkbox-line">
+   			 <input type="checkbox" id="partners">
+   			 <span>Чи цікава вам інформація від наших партнерів (фармацевтичних компаній) щодо нових протоколів та препаратів?</span>
+			</label>
+
+			<label class="checkbox-line">
+   			 <input type="checkbox" id="partners" required>
+   			 <span>Згода на обробку персональних даних</span>
+			</label>
+
+			<label class="checkbox-line">
+   			 <input type="checkbox" id="partners" required>
+   			 <span>Згода на фото- та відеозйомку під час заходу та подальше використання матеріалів у соціальних мережах</span>
+			</label>
+            
+
+            <textarea id="comments" placeholder="Побажання чи зауваження"></textarea>
+
+
+
+            <div class="price-display">До сплати: <span id="final-price">1000</span> грн</div>
+            <button type="submit" id="submit-btn">Зареєструватись і оплатити</button>
+            <button type="button" class="btn-back" onclick="secondStep()">Назад</button>
+        </div>
+    </form>
+</div>
+
+<script src="script2.js"></script>
+
+</body>
+</html>
